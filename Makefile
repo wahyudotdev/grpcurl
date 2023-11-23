@@ -38,6 +38,12 @@ docker:
 	docker build -t wahyudotdev/grpcurl:$(dev_build_version) .
 	@rm VERSION
 
+.PHONY: docker-buildx
+docker:
+	@echo $(dev_build_version) > VERSION
+	docker buildx build --platform linux/amd64,linux/arm64 -t wahyudotdev/grpcurl:$(dev_build_version) . --push
+	@rm VERSION
+
 .PHONY: generate
 generate: .tmp/protoc/bin/protoc
 	@go install google.golang.org/protobuf/cmd/protoc-gen-go@a709e31e5d12
