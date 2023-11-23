@@ -35,7 +35,7 @@ release:
 .PHONY: docker
 docker:
 	@echo $(dev_build_version) > VERSION
-	docker build -t fullstorydev/grpcurl:$(dev_build_version) .
+	docker build -t wahyudotdev/grpcurl:$(dev_build_version) .
 	@rm VERSION
 
 .PHONY: generate
